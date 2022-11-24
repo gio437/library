@@ -12,10 +12,14 @@
     <div class = "container">
         <div class = "library">
             <table>
-                <h1>Books</h1>
+                <h1>Books <button class = "remove">remove</button>
+                    <button class = "remove">remove</button>
+                    <button class = "remove">remove</button> 
+                    <button class = "remove">remove</button> 
+                </h1>
                 <tr class = "add"></tr>
                 <table>
-                    <tr>
+                    <tr class = "title">
                       <th>title</th>
                       <td>Knocky</td>
                       <td>Flor</td>
@@ -46,6 +50,25 @@
                   </table>
             </table>
         </div>
+            <div class="form-popup" id="myForm">
+              <form action="/action_page.php" class="form-container">
+            
+                <label for="email"><b>Title</b></label>
+                <input type="text" placeholder="Enter Title" name="title" required>
+            
+                <label for="psw"><b>Author</b></label>
+                <input type="text" placeholder="Enter Author" name="author" required>
+
+                <label for="psw"><b>Pages</b></label>
+                <input type="text" placeholder="Enter Number Of Pages" name="pages" required>
+
+                <label for="psw"><b>Read</b></label>
+                <input type="text" placeholder="Enter if it was read/not read" name="read" required>
+            
+                <button type="submit" class="btn">Submit</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+              </form>
+            </div>
         <div class = "press"></div>
     </div>
 </body>

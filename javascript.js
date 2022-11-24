@@ -8,23 +8,25 @@ function Book(title, author, pages, read) { //the constructor
 }
 
 
-let press = document.querySelector(".press"); //will create button
+let press = document.querySelector(".press"); //will create new book button
 
 let enter = document.createElement("button");
 enter.classList.add("submit");
-enter.textContent = "Add Books";
-enter.addEventListener("click", inputText);
+enter.textContent = "New Book";
+enter.addEventListener("click", inputText); //triggers function when new book button is clicked
 
 press.appendChild(enter);
 
 
 
 function inputText() {
-    let bookInfo = window.prompt("input the title, author, pages, and read/not read");
+    document.getElementById("myForm").style.display = "block"; //will open form
+
+    //let bookInfo = window.prompt("input the title, author, pages, and read/not read");
     myLibrary.push(bookInfo);
     console.log(myLibrary);
 
-    let type = document.querySelector(".add");
+    let type = document.querySelector(".title"); //will add cell to title 
 
     let create = document.createElement("td");
     create.classList.add("books");
@@ -34,6 +36,10 @@ function inputText() {
 
     type.appendChild(create);
 }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
 
 
 // function theHobbit(title, author, pages, read) {
