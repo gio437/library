@@ -31,10 +31,12 @@ function Book(title, author, pages, read) { //the constructor
     readEl.appendChild(create4);
 
     let remove = document.querySelector(".changeRead");
+    let create5 = document.createElement("td");
     let button = document.createElement("button");
     button.classList.add("remove");
     button.textContent = "toggle read";
-    remove.appendChild(button);
+    remove.appendChild(create5);
+    create5.appendChild(button);
 }
 
 let press = document.querySelector(".press"); //will create new book button
@@ -97,3 +99,8 @@ function closeForm() {
 
 // let results = new theHobbit('Diary', 'by Giovanni', '50 pages', 'not read');
 // console.log(theHobbit.info());
+
+// pass in myLIbrary.prototype.title
+// inside proto, make the data type as index -1
+
+// call title name of book,call it book.prototype.title, than change .read =
