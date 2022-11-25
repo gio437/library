@@ -37,6 +37,14 @@ function Book(title, author, pages, read) { //the constructor
     button.textContent = "toggle read";
     remove.appendChild(create5);
     create5.appendChild(button);
+
+    let take = document.querySelector(".delete");
+    let create6 = document.createElement("td");
+    let removeButton = document.createElement("button");
+    removeButton.classList.add("take");
+    removeButton.textContent = "remove";
+    take.appendChild(create6);
+    create6.appendChild(removeButton);
 }
 
 let press = document.querySelector(".press"); //will create new book button

@@ -28,7 +28,6 @@ td, th {
     border-radius: 15px;
     box-shadow: 0 9px #999;
     margin-top: 50px;
-    margin-left: 250px;
   }
   
 .submit:active {
@@ -39,7 +38,7 @@ td, th {
 
 .remove {
     display: inline-block;
-    padding: 8px 13px;
+    padding: 5px 8px;
     font-size: 15px;
     cursor: pointer;
     text-align: center;
@@ -53,6 +52,27 @@ td, th {
 }
   
 .remove:active {
+    background-color: darkred;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.take {
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: red;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+  
+.take:active {
     background-color: darkred;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
