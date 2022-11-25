@@ -31,8 +31,6 @@ td, th {
     margin-left: 250px;
   }
   
-.submit:hover {background-color: orange}
-  
 .submit:active {
     background-color: darkorange;
     box-shadow: 0 5px #666;
@@ -48,17 +46,14 @@ td, th {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: orange;
+    background-color: red;
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-    margin-left: 48px;
 }
-
-.remove:hover {background-color: orange}
   
 .remove:active {
-    background-color: darkorange;
+    background-color: darkred;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
