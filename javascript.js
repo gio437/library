@@ -1,4 +1,4 @@
-let myLibrary = ["book1", "book2", "book3"];
+let myLibrary = [];
 
 function Book(title, author, pages, read) { //the constructor
     this.title = title;
@@ -7,18 +7,43 @@ function Book(title, author, pages, read) { //the constructor
     this.read = read;
 }
 
+//let bookRemover = document.querySelector(".delete");
+//let l = document.querySelector(".take");
+
+//bookRemover.addEventListener("click", function() {
+    //let findBtn = this.dataset.indexNumber;
+//     removeBook(this);
+// });
+
+
+// function deleteBook(e) {
+//     console.log(e);
+//     if (e.target.classList.contains("take")) {
+//         console.log(e.target.parentElement.childElement);
+//         e.target.parentElement.getAttribute("data-badges");
+//     }
+//     console.log("hello");
+// }
+
 let bookRemover = document.querySelector(".delete");
-bookRemover.addEventListener("click", removeBook);
+let hello = bookRemover.addEventListener("click", removeBook);
 
-function removeBook() {
-   let element = document.querySelector(".take");
-   let badges = element.getAttribute("data-badges");
+function removeBook(e) {
+    let num;
 
-   myLibrary.splice(badges, 1);
+    if (e.target.classList.contains("take")) {
+         num = parseInt(e.target.parentElement.id);
+         console.log(typeof num);
+    }
+
+//     let hello = d.getAttribute("data-badges");
+//    let badges = hello; //gets the data of the specific button clicked
+
+   myLibrary.splice(num, 1);
    console.log(myLibrary);
-   console.log(badges);
+   //console.log(badges);
 
-   //updates the removed boxes
+    //updates the removed boxes in DOM
     let type = document.querySelector(".books"); //will add cell to title 
     type.remove();
 
@@ -42,19 +67,37 @@ function removeBook() {
 
     let extract = document.querySelector(".extract");
     extract.remove();
+
+    if (r >= 0) { //maybe r = 0?
+        r--;
+    }
 }
-
-
-
 
 let toggleButton = document.querySelector(".changeRead");
 toggleButton.addEventListener("click", changeReadStatus);
 
-function changeReadStatus() {
-    
+function changeReadStatus(e) {
+    if (e.target.classList.contains("take")) {
+        num = parseInt(e.target.parentElement.id);
+        console.log(typeof num);
+   }
+
+    if (b.read == "read") {
+        b.read = "not read";
+    }
+    else {
+        b.read = "read";
+    }
+
+    let cell = document.querySelector(".books4");
+    cell.remove();
+
+    let readEl = document.querySelector(".cell4");
+    let create4 = document.createElement("td");
+    create4.classList.add("books4");
+    create4.textContent = b.read;
+    readEl.appendChild(create4);
 }
-
-
 
 let press = document.querySelector(".press"); //will create new book button
 
@@ -65,6 +108,7 @@ enter.addEventListener("click", openForm); //triggers function when new book but
 
 press.appendChild(enter);
 
+let r = 0; //adds data values to remove btn
 
 function displayBook() {
     for (let i = 0; i < myLibrary.length; i++) {
@@ -116,12 +160,9 @@ function displayBook() {
     take.appendChild(create6);
     create6.appendChild(removeButton);
 
-    let totalRemove = document.querySelectorAll(".take");
-    for (let i = 0; i < totalRemove.length; i++) {
-         let r = 0;
-         r += i;
-         removeButton.setAttribute("data-badges", r); //will give element a data attr
-    }
+    //let totalRemove = document.querySelectorAll(".take");
+    create6.id = r; //will give element a data attr
+    r++;
 }
 
 function openForm() {
@@ -131,7 +172,6 @@ function openForm() {
     complete.addEventListener("click", addBookToLibrary);
 }
 
-
 function addBookToLibrary() {
     let title = document.querySelector(".title").value;
     let author = document.querySelector(".author").value;
@@ -139,7 +179,7 @@ function addBookToLibrary() {
     let read = document.querySelector(".read").value;
     console.log(title);
 
-    let bookInfo = new Book(title, author, pages, read); //will add new book to array
+    let bookInfo = new Book(title, author, pages, read, id); //will add new book to array
     myLibrary.push(bookInfo);
     console.log(myLibrary);
 
