@@ -1,29 +1,12 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) { //the constructor
+function Book(title, author, pages, read, id) { //the constructor
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = id;
 }
-
-//let bookRemover = document.querySelector(".delete");
-//let l = document.querySelector(".take");
-
-//bookRemover.addEventListener("click", function() {
-    //let findBtn = this.dataset.indexNumber;
-//     removeBook(this);
-// });
-
-
-// function deleteBook(e) {
-//     console.log(e);
-//     if (e.target.classList.contains("take")) {
-//         console.log(e.target.parentElement.childElement);
-//         e.target.parentElement.getAttribute("data-badges");
-//     }
-//     console.log("hello");
-// }
 
 let bookRemover = document.querySelector(".delete");
 let hello = bookRemover.addEventListener("click", removeBook);
@@ -33,15 +16,24 @@ function removeBook(e) {
 
     if (e.target.classList.contains("take")) {
          num = parseInt(e.target.parentElement.id);
-         console.log(typeof num);
+         console.log(num);
     }
+
+        // myLibrary.splice(num, 1);
+        // console.log(myLibrary);
 
 //     let hello = d.getAttribute("data-badges");
 //    let badges = hello; //gets the data of the specific button clicked
 
-   myLibrary.splice(num, 1);
-   console.log(myLibrary);
-   //console.log(badges);
+    let extractId = document.querySelectorAll(".extract");
+    for (let i = 0; i < extractId.length; i++) {
+        for (let i = 0; i < myLibrary.length; i++) {
+            if (extractId[i].id == myLibrary[i].id) {
+                myLibrary.splice(this, 1);
+                console.log(myLibrary);
+            }
+        } 
+    }
 
     //updates the removed boxes in DOM
     let type = document.querySelector(".books"); //will add cell to title 
@@ -68,34 +60,35 @@ function removeBook(e) {
     let extract = document.querySelector(".extract");
     extract.remove();
 
-    if (r >= 0) { //maybe r = 0?
-        r--;
-    }
+    // if (r >= 0) { //maybe r = 0?
+    //     r--;
+    // }
 }
 
 let toggleButton = document.querySelector(".changeRead");
 toggleButton.addEventListener("click", changeReadStatus);
 
 function changeReadStatus(e) {
-    if (e.target.classList.contains("take")) {
-        num = parseInt(e.target.parentElement.id);
-        console.log(typeof num);
+    let num;
+
+    if (e.target.classList.contains("remove")) {
+        num = e.target.parentElement.id;
    }
 
-    if (b.read == "read") {
-        b.read = "not read";
+    if (num == "read") {
+        num = "not read";
     }
     else {
-        b.read = "read";
+        num = "read";
     }
 
     let cell = document.querySelector(".books4");
     cell.remove();
 
-    let readEl = document.querySelector(".cell4");
+    let readEl = document.querySelector(".cell4"); //updates the new read
     let create4 = document.createElement("td");
     create4.classList.add("books4");
-    create4.textContent = b.read;
+    create4.textContent = num;
     readEl.appendChild(create4);
 }
 
@@ -161,6 +154,7 @@ function displayBook() {
     create6.appendChild(removeButton);
 
     //let totalRemove = document.querySelectorAll(".take");
+    create5.id = read; //gives element a data attr for toggle read
     create6.id = r; //will give element a data attr
     r++;
 }
@@ -177,6 +171,7 @@ function addBookToLibrary() {
     let author = document.querySelector(".author").value;
     let pages = document.querySelector(".pages").value;
     let read = document.querySelector(".read").value;
+    let id = r;
     console.log(title);
 
     let bookInfo = new Book(title, author, pages, read, id); //will add new book to array
