@@ -19,8 +19,8 @@ function removeBook(e) {
          console.log(num);
     }
 
-    myLibrary.slice(num, 1);
-    myLibrary.push(myLibrary.shift());
+    //myLibrary.slice(num, 1);
+    //myLibrary.push(myLibrary.shift());
 
     // let extractId = document.querySelectorAll(".extract");
     // extractId.shift();
@@ -28,18 +28,16 @@ function removeBook(e) {
         // myLibrary.splice(num, 1);
         // console.log(myLibrary);
 
-//     let takeValue = d.getAttribute("data-badges");
-//    let badges = hello; //gets the data of the specific button clicked
 
-    // let extractId = document.querySelectorAll(".extract");
-    // for (let i = 0; i < extractId.length; i++) {
-    //     for (let i = 0; i < myLibrary.length; i++) {
-    //         if (extractId[i].id == myLibrary[i].id) {
-    //             myLibrary.splice(this, 1);
-    //             console.log(myLibrary);
-    //         }
-    //     }
-    // }
+
+     
+         for (let j = 0; j < myLibrary.length; j++) {
+             if (num === myLibrary[j].id) {
+                 myLibrary.splice(num, 1);
+                 console.log(myLibrary);
+             }
+         }
+ 
 
     //updates the removed boxes in DOM
     let type = document.querySelector(".books"); //will add cell to title
@@ -81,22 +79,32 @@ toggleButton.addEventListener("click", changeReadStatus);
 function changeReadStatus(e) {
     let num;
     let word;
+    let readValue;
 
     if (e.target.classList.contains("remove")) {
-        num = parseInt(e.target.parentElement.id);
+        num = (e.target.parentElement.id);
         console.log(num);
    }
 
-   for (let j = 0; j < myLibrary.length; j++) {
-    if (myLibrary[j].read == "read") {
-        for (let j = 0; j < myLibrary.length; j++) {
-            word = myLibrary[num].read = "not read";
-        }
-    }
-    else {
-            word = myLibrary[num].read = "read";
-    }
-}
+ if (e.target.classList.contains("remove")) {
+        readValue = (e.target.parentElement.read);
+        console.log(readValue);
+   }
+
+   
+         for (let j = 0; j < myLibrary.length; j++) {
+             if (readValue === myLibrary[j].read) {
+			if (readValue === "read") {
+		     		word = myLibrary[num].read = "not read";
+                 		console.log(myLibrary);
+				console.log("hello1");
+    			}
+    			else {
+		     		word = myLibrary[num].read ="read";
+				console.log("hello2");
+			}
+    		}
+	}
 
 //    let readElements = document.querySelectorAll(".books4");
 //     for (let j = 0; j < myLibrary.length; j++) {
@@ -121,13 +129,14 @@ function changeReadStatus(e) {
     //     num = "read";
     // }
 
-     let cell = document.querySelectorAll(".books4");
-     cell[num].remove();
+     let cell = document.querySelector(".books4");
+     cell.remove();
 
     let readEl = document.querySelector(".cell4"); //updates the new read
     let create4 = document.createElement("td");
     create4.classList.add("books4");
     create4.id = num;
+    create4.read = readValue;
     create4.textContent = word;
     readEl.appendChild(create4);
 }
@@ -210,6 +219,7 @@ function displayBook() {
     //let totalRemove = document.querySelectorAll(".take");
     create4.id = r; //for read cell
     create5.id = r; //gives element a data attr for toggle read
+    create5.read = read;
     create6.id = r; //will give element a data attr
     r++;
 }
