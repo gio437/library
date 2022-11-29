@@ -18,10 +18,7 @@ function removeBook(e) {
          num = parseInt(e.target.parentElement.id);
          console.log(num);
     }
-
-    //myLibrary.slice(num, 1);
-    //myLibrary.push(myLibrary.shift());
-
+    
     // let extractId = document.querySelectorAll(".extract");
     // extractId.shift();
 
@@ -34,6 +31,7 @@ function removeBook(e) {
          for (let j = 0; j < myLibrary.length; j++) {
              if (num === myLibrary[j].id) {
                  myLibrary.splice(num, 1);
+                 myLibrary.push(myLibrary.shift());
                  console.log(myLibrary);
              }
          }
