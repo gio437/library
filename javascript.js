@@ -86,7 +86,7 @@ function changeReadStatus(e) {
    let readElements = document.querySelectorAll(".books4");
     for (let j = 0; j < myLibrary.length; j++) {
          for (let i = 0; i < readElements.length; i++) {
-            if (myLibrary[i].read == readElements[i].id && myLibrary.read == "read") {
+            if (myLibrary[i].read == readElements[i].id && myLibrary[i].read == "read") {
                 for (key in myLibrary);
                     word = myLibrary[key].read = "not read";
                     console.log("hello1");
