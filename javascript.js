@@ -9,41 +9,47 @@ function Book(title, author, pages, read, id) { //the constructor
 }
 
 let bookRemover = document.querySelector(".delete");
-let hello = bookRemover.addEventListener("click", removeBook);
+let willRemove = bookRemover.addEventListener("click", removeBook);
 
 function removeBook(e) {
     let num;
+    let rCopy;
 
     if (e.target.classList.contains("take")) {
          num = parseInt(e.target.parentElement.id);
          console.log(num);
-         r = num;
+         rCopy = num;
     }
 
-        myLibrary.splice(num, 1);
-        console.log(myLibrary);
+    for (let j = 0; j < myLibrary.length; j++) {
+        if (myLibrary[j].id == num) {
+            myLibrary.splice(j, 1);
+            myLibrary.push();
+            console.log(myLibrary);
+        }
+    }
  
 
     //updates the removed boxes in DOM
-    for (let j = 0; j < myLibrary.length; j++) {
-        let remove1 = document.getElementById(("cell-first" + j));
+        let remove1 = document.getElementById(("cell-first" + rCopy));
         remove1.remove();
 
-        let remove2 = document.getElementById(("cell-second" + j));
+        let remove2 = document.getElementById(("cell-second" + rCopy));
         remove2.remove();
 
-        let remove3 = document.getElementById(("cell-third" + j));
+        let remove3 = document.getElementById(("cell-third" + rCopy));
         remove3.remove();
 
-        let remove4 = document.getElementById(("toggle" + j));
+        let remove4 = document.getElementById(("toggle" + rCopy));
         remove4.remove();
         
-        let remove5 = document.getElementById(r);
+        let remove5 = document.getElementById(rCopy);
         remove5.remove();
 
-        // let remove6 = document.getElementById(("cell-fourth" + r));
-        // remove6.remove();
-    }
+        let remove6 = document.getElementById(rCopy);
+        remove6.remove();
+
+        r--;
 }
 
 let toggleButton = document.querySelector(".changeRead");
