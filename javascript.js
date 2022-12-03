@@ -17,7 +17,7 @@ function removeBook(e) {
     if (e.target.classList.contains("take")) {
          num = parseInt(e.target.parentElement.id);
          console.log(num);
-         r--;
+         r = num;
     }
 
         myLibrary.splice(num, 1);
@@ -25,29 +25,25 @@ function removeBook(e) {
  
 
     //updates the removed boxes in DOM
-    let type = document.querySelector(".books"); //will add cell to title
-    type.remove();
+    for (let j = 0; j < myLibrary.length; j++) {
+        let remove1 = document.getElementById(("cell-first" + j));
+        remove1.remove();
 
-    let authorEl = document.querySelector(".books2");
-    authorEl.remove();
+        let remove2 = document.getElementById(("cell-second" + j));
+        remove2.remove();
 
-    let pageEl = document.querySelector(".books3");
-    pageEl.remove();
+        let remove3 = document.getElementById(("cell-third" + j));
+        remove3.remove();
 
-    let readEl = document.querySelector(".books4");
-    readEl.remove();
+        let remove4 = document.getElementById(("toggle" + j));
+        remove4.remove();
+        
+        let remove5 = document.getElementById(r);
+        remove5.remove();
 
-    let remove = document.querySelector(".remove");
-    remove.remove();
-
-    let take = document.querySelector(".take"); //parent
-    take.remove();
-
-    let go = document.querySelector(".switch");
-    go.remove();
-
-    let extract = document.querySelector(".extract");
-    extract.remove();
+        // let remove6 = document.getElementById(("cell-fourth" + r));
+        // remove6.remove();
+    }
 }
 
 let toggleButton = document.querySelector(".changeRead");
@@ -56,7 +52,6 @@ toggleButton.addEventListener("click", changeReadStatus);
 function changeReadStatus(e) {
     let num;
     let word;
-    
 
     if (e.target.classList.contains("remove")) {
         num = (e.target.parentElement.id);
@@ -69,23 +64,20 @@ function changeReadStatus(e) {
                      word = "not read";
                      myLibrary[j].read = "not read";
                      console.log("hello1");
-             }
-             else {
-                    word = "read";
-                    myLibrary[j].read = "read";
-                    console.log("hello2");
-             }
-          }
-      }
-
-    let cell = document.querySelector(".books4");
-    cell.remove();
-
-    let readEl = document.querySelector(".cell4"); //updates the new read
-    let create4 = document.createElement("td");
-    create4.classList.add("books4");
-    create4.textContent = word;
-    readEl.appendChild(create4);
+                     let cell1 = document.getElementById(("toggle" + j));
+                     console.log(cell1);
+                     cell1.textContent = myLibrary[j].read;
+                }
+                else {
+                     word = "read";
+                     myLibrary[j].read = "read";
+                     console.log("hello2");
+                     let cell2 = document.getElementById(("toggle" + j));
+                     console.log(cell2);
+                     cell2.textContent = myLibrary[j].read;
+                }
+            }
+    }
 }
 
 
@@ -111,18 +103,21 @@ function displayBook() {
     let type = document.querySelector(".cell1"); //will add cell to title
     let create = document.createElement("td"); //creates the cell elements
     create.classList.add("books");
+    create.id = "cell-first" + r;
     create.textContent = title;
     type.appendChild(create);
 
     let authorEl = document.querySelector(".cell2");
     let create2 = document.createElement("td");
     create2.classList.add("books2");
+    create2.id = "cell-second" + r;
     create2.textContent = author;
     authorEl.appendChild(create2);
 
     let pageEl = document.querySelector(".cell3");
     let create3 = document.createElement("td");
     create3.classList.add("books3");
+    create3.id = "cell-third" + r;
     create3.textContent = pages;
     pageEl.appendChild(create3);
 
@@ -151,7 +146,7 @@ function displayBook() {
     create6.appendChild(removeButton);
 
     //let totalRemove = document.querySelectorAll(".take");
-    create4.id = read; //for read cell
+    create4.id = "toggle" + r; //for read cell
     create5.id = r; //gives element a data attr for toggle read
     create6.id = r; //will give element a data attr
     r++;
