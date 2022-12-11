@@ -1,12 +1,15 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read, id) { //the constructor
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = id;
-}
+ //the constructor
+    class Input {
+        constructor(title, author, pages, read, id) {
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.read = read;
+            this.id = id;
+        }
+    }
 
 let bookRemover = document.querySelector(".delete");
 let willRemove = bookRemover.addEventListener("click", removeBook);
@@ -24,11 +27,9 @@ function removeBook(e) {
     for (let j = 0; j < myLibrary.length; j++) {
         if (myLibrary[j].id == num) {
             myLibrary.splice(j, 1);
-            myLibrary.push();
             console.log(myLibrary);
         }
     }
- 
 
     //updates the removed boxes in DOM
         let remove1 = document.getElementById(("cell-first" + rCopy));
@@ -173,7 +174,7 @@ function addBookToLibrary() {
     let id = r;
     console.log(title);
 
-    let bookInfo = new Book(title, author, pages, read, id); //will add new book to array
+    let bookInfo = new Input(title, author, pages, read, id); //will add new book to array
     myLibrary.push(bookInfo);
     console.log(myLibrary);
 
