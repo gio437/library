@@ -43,7 +43,7 @@ function removeBook(e) {
 
         let remove4 = document.getElementById(("toggle" + rCopy));
         remove4.remove();
-        
+
         let remove5 = document.getElementById(rCopy);
         remove5.remove();
 
@@ -161,9 +161,13 @@ function displayBook() {
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
+}
 
-    let complete = document.querySelector(".btn"); //will access the submit button on form
-    complete.addEventListener("click", addBookToLibrary);
+const checkSubmit = function() {
+    const form = document.querySelector('.form-container');
+    if (form.checkValidity()) {
+        addBookToLibrary();
+    }
 }
 
 function addBookToLibrary() {
