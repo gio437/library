@@ -1,5 +1,4 @@
 let myLibrary = [];
-
  //the constructor
     class Input {
         constructor(title, author, pages, read, id) {
@@ -17,13 +16,11 @@ let willRemove = bookRemover.addEventListener("click", removeBook);
 function removeBook(e) {
     let num;
     let rCopy;
-
     if (e.target.classList.contains("take")) {
          num = parseInt(e.target.parentElement.id);
          console.log(num);
          rCopy = num;
     }
-
     for (let j = 0; j < myLibrary.length; j++) {
         if (myLibrary[j].id == num) {
             myLibrary.splice(j, 1);
@@ -34,23 +31,17 @@ function removeBook(e) {
     //updates the removed boxes in DOM
         let remove1 = document.getElementById(("cell-first" + rCopy));
         remove1.remove();
-
         let remove2 = document.getElementById(("cell-second" + rCopy));
         remove2.remove();
-
         let remove3 = document.getElementById(("cell-third" + rCopy));
         remove3.remove();
-
         let remove4 = document.getElementById(("toggle" + rCopy));
         remove4.remove();
-
         let remove5 = document.getElementById(rCopy);
         remove5.remove();
-
         let remove6 = document.getElementById(rCopy);
         remove6.remove();
-
-        r--;
+        domData--;
 }
 
 let toggleButton = document.querySelector(".changeRead");
@@ -89,15 +80,13 @@ function changeReadStatus(e) {
 
 
 let press = document.querySelector(".press"); //will create new book button
-
 let enter = document.createElement("button");
 enter.classList.add("submit");
 enter.textContent = "New Book";
 enter.addEventListener("click", openForm); //triggers function when new book button is clicked
-
 press.appendChild(enter);
 
-let r = 0; //adds data values to remove btn
+let domData = 0; //adds data values to all created DOM elements
 
 function displayBook() {
     for (let i = 0; i < myLibrary.length; i++) {
@@ -110,21 +99,21 @@ function displayBook() {
     let type = document.querySelector(".cell1"); //will add cell to title
     let create = document.createElement("td"); //creates the cell elements
     create.classList.add("books");
-    create.id = "cell-first" + r;
+    create.id = "cell-first" + domData;
     create.textContent = title;
     type.appendChild(create);
 
     let authorEl = document.querySelector(".cell2");
     let create2 = document.createElement("td");
     create2.classList.add("books2");
-    create2.id = "cell-second" + r;
+    create2.id = "cell-second" + domData;
     create2.textContent = author;
     authorEl.appendChild(create2);
 
     let pageEl = document.querySelector(".cell3");
     let create3 = document.createElement("td");
     create3.classList.add("books3");
-    create3.id = "cell-third" + r;
+    create3.id = "cell-third" + domData;
     create3.textContent = pages;
     pageEl.appendChild(create3);
 
@@ -152,11 +141,10 @@ function displayBook() {
     take.appendChild(create6);
     create6.appendChild(removeButton);
 
-    //let totalRemove = document.querySelectorAll(".take");
-    create4.id = "toggle" + r; //for read cell
-    create5.id = r; //gives element a data attr for toggle read
-    create6.id = r; //will give element a data attr
-    r++;
+    create4.id = "toggle" + domData; //for read cell
+    create5.id = domData; //gives element a data attr for toggle read
+    create6.id = domData; //will give element a data attr
+    domData++;
 }
 
 function openForm() {
@@ -175,40 +163,15 @@ function addBookToLibrary() {
     let author = document.querySelector(".author").value;
     let pages = document.querySelector(".pages").value;
     let read = document.querySelector(".read").value;
-    let id = r;
+    let id = domData;
     console.log(title);
-
     let bookInfo = new Input(title, author, pages, read, id); //will add new book to array
     myLibrary.push(bookInfo);
     console.log(myLibrary);
-
     event.preventDefault(); //will prevent form submission page refresh
-
     displayBook();
 }
 
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
-
-
-// function theHobbit(title, author, pages, read) {
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.read = read;
-
-//     let info = console.log(title, author, pages, read);
-//     theHobbit.info = function() {
-//         return info;
-//     };
-// }
-
-
-// let results = new theHobbit('Diary', 'by Giovanni', '50 pages', 'not read');
-// console.log(theHobbit.info());
-
-// pass in myLIbrary.prototype.title
-// inside proto, make the data type as index -1
-
-// call title name of book,call it book.prototype.title, than change .read =
